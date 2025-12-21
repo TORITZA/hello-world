@@ -12,6 +12,7 @@ class MainWindow(QMainWindow):
         button = QPushButton("Press me!")
         button.setCheckable(True)
         button.clicked.connect(self.the_button_was_clicked)
+        button.clicked.connect(self.the_button_was_toggled)
 
         # Set central widget of the window: 
         self.setCentralWidget(button)
@@ -19,6 +20,8 @@ class MainWindow(QMainWindow):
     def the_button_was_clicked(self):
         print("Clicked!")
 
+    def the_button_was_toggled(self, checked):
+        print(f"Checked? {checked}")
 
 
 app = QApplication([])
