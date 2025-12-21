@@ -7,21 +7,25 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # variable to store the current state of a widget:
+        self.button_is_checked = True 
+
         self.setWindowTitle('My App')
 
-        button = QPushButton("Press me!")
-        button.setCheckable(True)
-        button.clicked.connect(self.the_button_was_clicked)
-        button.clicked.connect(self.the_button_was_toggled)
+        self.button = QPushButton("Press me!")
+        self.button.setCheckable(True)
+        self.button.released.connect(self.the_button_was_released)
+        self.button.setChecked(self.button_is_checked)
 
         # Set central widget of the window: 
-        self.setCentralWidget(button)
+        self.setCentralWidget(self.button)
 
-    def the_button_was_clicked(self):
-        print("Clicked!")
+    def the_button_was_released(self):
+        # .self reference required in order to access the button 
+        # in this slot 
+        self.button_is_checked = self.button.isChecked()
 
-    def the_button_was_toggled(self, checked):
-        print(f"Checked? {checked}")
+        print(self.button_is_checked)
 
 
 app = QApplication([])
