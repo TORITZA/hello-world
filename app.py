@@ -1,26 +1,71 @@
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMenu, QLabel, QTextEdit
+from PyQt6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QDateEdit,
+    QDateTimeEdit,
+    QDial,
+    QDoubleSpinBox,
+    QFontComboBox,
+    QLabel,
+    QLCDNumber,
+    QLineEdit,
+    QMainWindow,
+    QProgressBar,
+    QPushButton,
+    QRadioButton,
+    QSlider,
+    QSpinBox,
+    QTimeEdit,
+    QVBoxLayout,
+    QWidget
+    )
 
-
+# Subclass QMainWindow to customize the app's main window:
 class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        
+        self.setWindowTitle("Widgets App Demo")
 
+        layout = QVBoxLayout()
+        widgets = [
+            QCheckBox,
+            QComboBox,
+            QDateEdit,
+            QDateTimeEdit,
+            QDial,
+            QDoubleSpinBox,
+            QFontComboBox,
+            QLCDNumber,
+            QLabel,
+            QLineEdit,
+            QProgressBar,
+            QPushButton,
+            QRadioButton,
+            QSlider,
+            QSpinBox,
+            QTimeEdit,
+        ]
 
-    def contextMenuEvent(self, e):
-        context = QMenu(self)
-        context.addAction(QAction("test 1", self))
-        context.addAction(QAction("test 2", self))
-        context.addAction(QAction("test 3", self))
-        context.exec(e.globalPos())
+        for w in widgets:
+            layout.addWidget(w())
+        
+        widget = QWidget()
+        widget.setLayout(layout)
+
+        # Set the central widget of the Window. 
+        # Widget will expand by default to take up all the space in the window:
+        self.setCentralWidget(widget)
 
 
 app = QApplication([])
 
-# Create a Qt Button widget, which automatically acts as the window: 
+
 window = MainWindow()
 window.show() # IMPORTANT!!!!!!!! Windows are hidden by default.
 
