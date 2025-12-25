@@ -1,73 +1,47 @@
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QAction
+from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
-    QDateEdit,
-    QDateTimeEdit,
     QDial,
     QDoubleSpinBox,
-    QFontComboBox,
     QLabel,
-    QLCDNumber,
     QLineEdit,
+    QListWidget,
     QMainWindow,
-    QProgressBar,
-    QPushButton,
-    QRadioButton,
     QSlider,
-    QSpinBox,
-    QTimeEdit,
-    QVBoxLayout,
-    QWidget
+    QSpinBox
     )
+
 
 # Subclass QMainWindow to customize the app's main window:
 class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        
-        self.setWindowTitle("Widgets App Demo")
 
-        layout = QVBoxLayout()
-        widgets = [
-            QCheckBox,
-            QComboBox,
-            QDateEdit,
-            QDateTimeEdit,
-            QDial,
-            QDoubleSpinBox,
-            QFontComboBox,
-            QLCDNumber,
-            QLabel,
-            QLineEdit,
-            QProgressBar,
-            QPushButton,
-            QRadioButton,
-            QSlider,
-            QSpinBox,
-            QTimeEdit,
-        ]
+        self.setWindowTitle("QLabel Demo")
+        self.setFixedSize(400,300)
 
-        for w in widgets:
-            layout.addWidget(w())
-        
-        widget = QWidget()
-        widget.setLayout(layout)
+        label = QLabel("Hi!")
+        font = label.font()
+        font.setPointSize(30)
+        label.setFont(font)
+        label.setAlignment(
+            Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter
+        )
 
-        # Set the central widget of the Window. 
-        # Widget will expand by default to take up all the space in the window:
-        self.setCentralWidget(widget)
+        self.setCentralWidget(label)
+
 
 
 app = QApplication([])
 
 
-window = MainWindow()
-window.show() # IMPORTANT!!!!!!!! Windows are hidden by default.
+w = MainWindow()
+w.show() # IMPORTANT!!!!!!!! Windows are hidden by default.
 
 # Start the event loop:
 app.exec()
