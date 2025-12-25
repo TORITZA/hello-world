@@ -22,16 +22,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QLabel Demo")
-        self.setFixedSize(400,300)
+        self.setWindowTitle("QLabel Pixmap Demo")
+        # self.setFixedSize(400,300)
 
         label = QLabel("Hi!")
-        font = label.font()
-        font.setPointSize(30)
-        label.setFont(font)
-        label.setAlignment(
-            Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter
-        )
+        label.setPixmap(QPixmap("poke_day.jpg"))
+        label.setScaledContents(True)
 
         self.setCentralWidget(label)
 
