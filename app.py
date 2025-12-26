@@ -22,21 +22,28 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QCheckBox Demo")
+        self.setWindowTitle("QComboBox Demo")
         self.setFixedSize(400,300)
         
-        checkbox = QCheckBox("This is a checkbox!")
-        checkbox.setCheckState(Qt.CheckState.Checked)
+        combo = QComboBox()
+        combo.addItems(["One", "Two", "Three"])
 
-        # For tristate: checkbox.setTristate(True)
-        checkbox.stateChanged.connect(self.show_state)
+        # Sends the current index (position) of the selected item.
+        combo.currentIndexChanged.connect(self.index_changed)
 
-        self.setCentralWidget(checkbox)
+        # Alternate signal to send an option's text:
+        combo.currentTextChanged.connect(self.text_changed)
+
+        # Set QComboBox to be editable:
+        # combo.setEditable(True)
+
+        self.setCentralWidget(combo)
     
-    def show_state(self, s):
-        print(s == Qt.CheckState.Checked.value)
-        print(s)
+    def index_changed(self, i): # i is an int
+        print(i)
 
+    def text_changed(self, s): # s is a str
+        print(s)
 
 
 app = QApplication([])
