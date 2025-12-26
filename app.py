@@ -22,25 +22,19 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QComboBox Demo")
+        self.setWindowTitle("QListWidget Demo")
         self.setFixedSize(400,300)
         
-        combo = QComboBox()
-        combo.addItems(["One", "Two", "Three"])
+        list_w = QListWidget()
+        list_w.addItems(["One", "Two", "Three"])
 
-        # Sends the current index (position) of the selected item.
-        combo.currentIndexChanged.connect(self.index_changed)
+        list_w.currentItemChanged.connect(self.item_changed)
+        list_w.currentTextChanged.connect(self.text_changed)
 
-        # Alternate signal to send an option's text:
-        combo.currentTextChanged.connect(self.text_changed)
-
-        # Set QComboBox to be editable:
-        # combo.setEditable(True)
-
-        self.setCentralWidget(combo)
+        self.setCentralWidget(list_w)
     
-    def index_changed(self, i): # i is an int
-        print(i)
+    def item_changed(self, i): # NOT an index; is a QListWidgetItem
+        print(i.text())
 
     def text_changed(self, s): # s is a str
         print(s)
