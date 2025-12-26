@@ -25,20 +25,16 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("QSlider Demo")
         self.setFixedSize(400,300)
         
-        slider = QSlider(Qt.Orientation.Horizontal)
+        dial = QDial()
+        dial.setRange(-10, 100)
+        dial.setSingleStep(1)
 
-        slider.setMinimum(-10)
-        slider.setMaximum(3)
-        # Or: spin.setRange(-10, 3)
+        dial.valueChanged.connect(self.value_changed)
+        dial.sliderMoved.connect(self.slider_position)
+        dial.sliderPressed.connect(self.slider_pressed)
+        dial.sliderReleased.connect(self.slider_released)
 
-        slider.setSingleStep(3)
-
-        slider.valueChanged.connect(self.value_changed)
-        slider.sliderMoved.connect(self.slider_position)
-        slider.sliderPressed.connect(self.slider_pressed)
-        slider.sliderReleased.connect(self.slider_released)
-
-        self.setCentralWidget(slider)
+        self.setCentralWidget(dial)
     
     def value_changed(self, i):
         print(i)
