@@ -22,21 +22,40 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QListWidget Demo")
+        self.setWindowTitle("QLineEdit Demo")
         self.setFixedSize(400,300)
         
-        list_w = QListWidget()
-        list_w.addItems(["One", "Two", "Three"])
+        line = QLineEdit()
+        line.setMaxLength(10)
+        line.setPlaceholderText("Enter your text")
 
-        list_w.currentItemChanged.connect(self.item_changed)
-        list_w.currentTextChanged.connect(self.text_changed)
+        #line.setReadOnly(True)
 
-        self.setCentralWidget(list_w)
+        # Perform input validation (IPv4 address example):
+        #line.setInputMask('000.000.000.000;_')
+
+        line.returnPressed.connect(self.return_pressed)
+        line.selectionChanged.connect(self.selection_changed)
+        line.textChanged.connect(self.text_changed)
+        line.textEdited.connect(self.text_edited)
+
+        self.setCentralWidget(line)
     
-    def item_changed(self, i): # NOT an index; is a QListWidgetItem
-        print(i.text())
+    def return_pressed(self):
+        # User hits Enter:
+        print("Return pressed!")
+        self.centralWidget().setText("BOOM!")
 
-    def text_changed(self, s): # s is a str
+    def selection_changed(self):
+        print("Selection changed")
+        print(self.centralWidget().selectedText())
+
+    def text_changed(self, s):
+        print("Text changed...")
+        print(s)
+    
+    def text_edited(self, s):
+        print("Text edited...")
         print(s)
 
 
