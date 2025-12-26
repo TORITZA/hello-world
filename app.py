@@ -22,14 +22,20 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QLabel Pixmap Demo")
-        # self.setFixedSize(400,300)
+        self.setWindowTitle("QCheckBox Demo")
+        self.setFixedSize(400,300)
+        
+        checkbox = QCheckBox("This is a checkbox!")
+        checkbox.setCheckState(Qt.CheckState.Checked)
 
-        label = QLabel("Hi!")
-        label.setPixmap(QPixmap("poke_day.jpg"))
-        label.setScaledContents(True)
+        # For tristate: checkbox.setTristate(True)
+        checkbox.stateChanged.connect(self.show_state)
 
-        self.setCentralWidget(label)
+        self.setCentralWidget(checkbox)
+    
+    def show_state(self, s):
+        print(s == Qt.CheckState.Checked.value)
+        print(s)
 
 
 
