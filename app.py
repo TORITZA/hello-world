@@ -22,29 +22,35 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Q(Double)SpinBox Demo")
+        self.setWindowTitle("QSlider Demo")
         self.setFixedSize(400,300)
         
-        spin = QSpinBox()
-        # Or: spin = QDoubleSpinBox()
+        slider = QSlider(Qt.Orientation.Horizontal)
 
-        spin.setMinimum(-9)
-        spin.setMaximum(3)
-        # Or: spin.setRange(-9, 3)
+        slider.setMinimum(-10)
+        slider.setMaximum(3)
+        # Or: spin.setRange(-10, 3)
 
-        spin.setPrefix("$")
-        spin.setSuffix("c")
-        spin.setSingleStep(3) # Or 3.0 for QDoubleSpinBox
-        spin.valueChanged.connect(self.value_changed)
-        spin.textChanged.connect(self.value_changed_str)
+        slider.setSingleStep(3)
 
-        self.setCentralWidget(spin)
+        slider.valueChanged.connect(self.value_changed)
+        slider.sliderMoved.connect(self.slider_position)
+        slider.sliderPressed.connect(self.slider_pressed)
+        slider.sliderReleased.connect(self.slider_released)
+
+        self.setCentralWidget(slider)
     
     def value_changed(self, i):
         print(i)
 
-    def value_changed_str(self ,s):
-        print(s)
+    def slider_position(self, p):
+        print("Position", p)
+    
+    def slider_pressed(self):
+        print("Pressed!")
+
+    def slider_released(self):
+        print("Released")
 
 
 app = QApplication([])
