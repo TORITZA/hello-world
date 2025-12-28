@@ -1,5 +1,5 @@
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout
 
 from layout_colorwidget import Color
 
@@ -10,34 +10,18 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Nested Layouts Example")
+        self.setWindowTitle("QGridLayout Example")
         self.setFixedSize(400,300)
 
-        layout1 = QHBoxLayout()
-        layout2 = QVBoxLayout()
-        layout3 = QVBoxLayout()
+        layout = QGridLayout()
 
-        layout2.addWidget(Color("purple"))
-        layout2.addWidget(Color("pink"))
-        layout2.addWidget(Color("blue"))
-
-      # set spacing around the layout, no rim/border:
-        layout1.setContentsMargins(0,0,0,0)
-        # sets the spacing between elements:
-        layout1.setSpacing(20)
-
-        layout1.addLayout(layout2)
-
-        layout1.addWidget(Color("red"))
-
-        layout3.addWidget(Color("green"))
-        layout3.addWidget(Color("yellow"))
-        layout3.addWidget(Color("orange"))
-
-        layout1.addLayout(layout3)
+        layout.addWidget(Color("red"), 0, 3)
+        layout.addWidget(Color("pink"), 1, 1)
+        layout.addWidget(Color("purple"), 2, 2)
+        layout.addWidget(Color("blue"), 3, 0)
         
         widget = QWidget()
-        widget.setLayout(layout1)
+        widget.setLayout(layout)
         self.setCentralWidget(widget)
        
 
