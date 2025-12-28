@@ -21,10 +21,18 @@ class MainWindow(QMainWindow):
         layout2.addWidget(Color("pink"))
         layout2.addWidget(Color("blue"))
 
+      # set spacing around the layout, no rim/border:
+        layout1.setContentsMargins(0,0,0,0)
+        # sets the spacing between elements:
+        layout1.setSpacing(20)
+
         layout1.addLayout(layout2)
 
         layout1.addWidget(Color("red"))
+
         layout3.addWidget(Color("green"))
+        layout3.addWidget(Color("yellow"))
+        layout3.addWidget(Color("orange"))
 
         layout1.addLayout(layout3)
         
