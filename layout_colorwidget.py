@@ -12,7 +12,7 @@ class Color(QWidget):
 
         palette = self.palette()
         
-        # change current winow color to new, passed-in QColor:
+        # change current window color to new, passed-in QColor:
         palette.setColor(QPalette.ColorRole.Window, QColor(color))
 
         # apply new color value back to custom widget:
