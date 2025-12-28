@@ -1,5 +1,5 @@
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout
 
 from layout_colorwidget import Color
 
@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("QV Box Layout Example")
         self.setFixedSize(400,300)
 
-        layout = QVBoxLayout()
+        layout = QHBoxLayout()
 
         layout.addWidget(Color("red"))
         layout.addWidget(Color("pink"))
