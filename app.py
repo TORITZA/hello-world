@@ -1,17 +1,14 @@
 
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtGui import QAction, QIcon, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication, 
     QMainWindow, 
-    QStackedLayout, 
-    QWidget, 
-    QGridLayout, 
-    QVBoxLayout, 
-    QHBoxLayout,
-    QPushButton,
-    QTabWidget
+    QLabel, 
+    QCheckBox,
+    QStatusBar,
+    QToolBar
 )
-
-from layout_colorwidget import Color
 
 
 # Subclass QMainWindow to customize the app's main window:
@@ -20,18 +17,18 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QTabWidget Example")
+        self.setWindowTitle("QAction")
         self.setFixedSize(400,300)
-
-        tabs = QTabWidget()
-        tabs.setTabPosition(QTabWidget.TabPosition.North)
-        tabs.setMovable(True)
-
-        for color in ["red", "green", "blue", "yellow"]:
-            tabs.addTab(Color(color), color)
-
-        self.setCentralWidget(tabs)
        
+        label = QLabel("hai! :3")
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        self.setCentralWidget(label)
+
+        toolbar = QToolBar("THE toolbar")
+        self.addToolBar(toolbar)
+
+
 
 app = QApplication([])
 w = MainWindow()
