@@ -33,6 +33,8 @@ class MainWindow(QMainWindow):
         button_action.triggered.connect(self.toolbar_button_clicked)
         toolbar.addAction(button_action)
 
+        self.setStatusBar(QStatusBar(self))
+
     def toolbar_button_clicked(self, s):
         print("click", s)
 
