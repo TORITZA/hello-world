@@ -26,11 +26,13 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(label)
 
         toolbar = QToolBar("THE toolbar")
+        toolbar.setIconSize(QSize(16, 16))
         self.addToolBar(toolbar)
 
-        button_action = QAction("My button", self)
+        button_action = QAction(QIcon("animal.png"),"My button", self)
         button_action.setStatusTip("This is MY button!")
         button_action.triggered.connect(self.toolbar_button_clicked)
+        button_action.setCheckable(True)
         toolbar.addAction(button_action)
 
         self.setStatusBar(QStatusBar(self))
