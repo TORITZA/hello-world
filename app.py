@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QAction")
+        self.setWindowTitle("QAction, Menus")
         self.setFixedSize(400,300)
        
         label = QLabel("hai! :3")
@@ -49,6 +49,13 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(QCheckBox())
 
         self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
+        file_menu.addSeparator()
+        file_menu.addAction(button_action2)
 
     def toolbar_button_clicked(self, s):
         print("click", s)
