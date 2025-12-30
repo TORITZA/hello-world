@@ -10,6 +10,7 @@ from PyQt6.QtWidgets import (
     QToolBar,
     QDialog
 )
+from subclass_module import CustomDialog
 
 
 # Subclass QMainWindow to customize the app's main window:
@@ -77,9 +78,12 @@ class MainWindow(QMainWindow):
     def dialog_getter(self, s):
         print("click", s)
 
-        dlg = QDialog(self)
-        dlg.setWindowTitle("HELLO.")
-        dlg.exec()
+        dlg = CustomDialog()
+        if dlg.exec():
+            print("Yippie! Success!")
+        else:
+            print("Cancelled!")
+
 
 
 app = QApplication([])
