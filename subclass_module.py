@@ -15,8 +15,8 @@ from PyQt6.QtWidgets import (
 
 # CUSTOM DIALOG BOX:
 class CustomDialog(QDialog):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent)
 
         self.setWindowTitle("HI.")
 

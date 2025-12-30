@@ -78,7 +78,7 @@ class MainWindow(QMainWindow):
     def dialog_getter(self, s):
         print("click", s)
 
-        dlg = CustomDialog()
+        dlg = CustomDialog(self)
         if dlg.exec():
             print("Yippie! Success!")
         else:
