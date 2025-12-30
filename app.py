@@ -8,7 +8,8 @@ from PyQt6.QtWidgets import (
     QCheckBox,
     QStatusBar,
     QToolBar,
-    QDialog
+    QDialog,
+    QMessageBox
 )
 from subclass_module import CustomDialog
 
@@ -62,6 +63,7 @@ class MainWindow(QMainWindow):
         file_submenu = file_menu.addMenu("submenu")
         file_submenu.addAction(button_action2)
 
+
         # DIALOG BOX:
         toolbar.addSeparator()
 
@@ -70,6 +72,16 @@ class MainWindow(QMainWindow):
         dialog_button.setStatusTip("dialog box")
         dialog_button.triggered.connect(self.dialog_getter)
         toolbar.addAction(dialog_button)
+
+        # MESSAGE BOX: 
+        time_icon = "alarm-clock--exclamation.png"
+        time_btn = QAction(QIcon(time_icon), "message pop-up", self)
+        time_btn.setStatusTip("message box")
+        time_btn.triggered.connect(self.message_getter)
+        toolbar.addAction(time_btn)
+
+        file_menu.addSeparator()
+        file_menu.addAction(time_btn)
 
 
     def toolbar_button_clicked(self, s):
@@ -83,6 +95,17 @@ class MainWindow(QMainWindow):
             print("Yippie! Success!")
         else:
             print("Cancelled!")
+    
+    def message_getter(self, s):
+        msg = QMessageBox(self)
+        msg.setWindowTitle("hey, you!")
+        msg.setText("Time's up!")
+        msg.setStandardButtons(QMessageBox.StandardButton.Close)
+        msg.setIcon(QMessageBox.Icon.Warning)
+        button = msg.exec()
+
+        if button == QMessageBox.StandardButton.Close:
+            print("hey, don't ignore me!!")
 
 
 
