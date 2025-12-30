@@ -97,15 +97,23 @@ class MainWindow(QMainWindow):
             print("Cancelled!")
     
     def message_getter(self, s):
-        msg = QMessageBox(self)
-        msg.setWindowTitle("hey, you!")
-        msg.setText("Time's up!")
-        msg.setStandardButtons(QMessageBox.StandardButton.Close)
-        msg.setIcon(QMessageBox.Icon.Warning)
-        button = msg.exec()
+        msg = QMessageBox.warning(
+            self, 
+            "Alt!", 
+            "grr, i'm warning you!")
+        
+        if msg == QMessageBox.StandardButton.Ok:
+            print("you heed my warning, then!")
 
-        if button == QMessageBox.StandardButton.Close:
-            print("hey, don't ignore me!!")
+        # msg = QMessageBox(self)
+        # msg.setWindowTitle("hey, you!")
+        # msg.setText("Time's up!")
+        # msg.setStandardButtons(QMessageBox.StandardButton.Close)
+        # msg.setIcon(QMessageBox.Icon.Warning)
+        # button = msg.exec()
+
+        # if button == QMessageBox.StandardButton.Close:
+        #     print("hey, don't ignore me!!")
 
 
 
