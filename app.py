@@ -7,7 +7,8 @@ from PyQt6.QtWidgets import (
     QLabel, 
     QCheckBox,
     QStatusBar,
-    QToolBar
+    QToolBar,
+    QDialog
 )
 
 
@@ -17,7 +18,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("QAction, Menus")
+        self.setWindowTitle("QDialog Demo")
         self.setFixedSize(400,300)
        
         label = QLabel("hai! :3")
@@ -60,9 +61,25 @@ class MainWindow(QMainWindow):
         file_submenu = file_menu.addMenu("submenu")
         file_submenu.addAction(button_action2)
 
+        # DIALOG BOX:
+        toolbar.addSeparator()
+
+        button = "press 4 dialog!"
+        dialog_button = QAction(button, self)
+        dialog_button.setStatusTip("dialog box")
+        dialog_button.triggered.connect(self.dialog_getter)
+        toolbar.addAction(dialog_button)
+
+
     def toolbar_button_clicked(self, s):
         print("click", s)
 
+    def dialog_getter(self, s):
+        print("click", s)
+
+        dlg = QDialog(self)
+        dlg.setWindowTitle("HELLO.")
+        dlg.exec()
 
 
 app = QApplication([])
