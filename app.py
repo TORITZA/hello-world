@@ -89,14 +89,18 @@ class MainWindow(QMainWindow):
         # NEW WINDOW 1:
         toolbar.addSeparator()
         self.button1 = QPushButton("push me!")
-        self.button1.clicked.connect(self.toggle_window1)
+        self.button1.clicked.connect(
+            lambda checked: self.toggle_window(self.w1)
+        )
         self.button1.setStatusTip("creates new window")
         toolbar.addWidget(self.button1)
 
         # NEW WINDOW 2:
         toolbar.addSeparator()
         self.button2 = QPushButton("push me...?")
-        self.button2.clicked.connect(self.toggle_window2)
+        self.button2.clicked.connect(
+            lambda checked: self.toggle_window(self.w2)
+        )
         self.button2.setStatusTip("creates ANOTHER new window")
         toolbar.addWidget(self.button2)
 
@@ -132,17 +136,11 @@ class MainWindow(QMainWindow):
         if button == QMessageBox.StandardButton.Close:
             print("hey, don't ignore me!!")
 
-    def toggle_window1(self, checked):
-        if self.w1.isVisible():
-            self.w1.hide()
+    def toggle_window(self, window):
+        if window.isVisible():
+            window.hide()
         else:
-            self.w1.show() 
-
-    def toggle_window2(self, checked):
-        if self.w2.isVisible():
-            self.w2.hide()
-        else:
-            self.w2.show() 
+            window.show()
 
 
 app = QApplication([])
