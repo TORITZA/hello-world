@@ -20,10 +20,11 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.w = AnotherWindow() # Creates second window upon start-up
+        self.w1 = AnotherWindow() # Creates window upon start-up
+        self.w2 = AnotherWindow()
 
-        self.setWindowTitle("QDialog Demo")
-        self.setFixedSize(400,300)
+        self.setWindowTitle("Multiple Windows Demo")
+        self.setFixedSize(500,400)
        
         label = QLabel("hai! :3")
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -85,12 +86,19 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(time_btn)
 
-        # NEW WINDOW:
+        # NEW WINDOW 1:
         toolbar.addSeparator()
-        self.button = QPushButton("push me!")
-        self.button.clicked.connect(self.toggle_window)
-        self.button.setStatusTip("creates new window")
-        toolbar.addWidget(self.button)
+        self.button1 = QPushButton("push me!")
+        self.button1.clicked.connect(self.toggle_window1)
+        self.button1.setStatusTip("creates new window")
+        toolbar.addWidget(self.button1)
+
+        # NEW WINDOW 2:
+        toolbar.addSeparator()
+        self.button2 = QPushButton("push me...?")
+        self.button2.clicked.connect(self.toggle_window2)
+        self.button2.setStatusTip("creates ANOTHER new window")
+        toolbar.addWidget(self.button2)
 
 
     def toolbar_button_clicked(self, s):
@@ -124,11 +132,17 @@ class MainWindow(QMainWindow):
         if button == QMessageBox.StandardButton.Close:
             print("hey, don't ignore me!!")
 
-    def toggle_window(self, checked):
-        if self.w.isVisible():
-            self.w.hide()
+    def toggle_window1(self, checked):
+        if self.w1.isVisible():
+            self.w1.hide()
         else:
-            self.w.show() 
+            self.w1.show() 
+
+    def toggle_window2(self, checked):
+        if self.w2.isVisible():
+            self.w2.hide()
+        else:
+            self.w2.show() 
 
 
 app = QApplication([])
