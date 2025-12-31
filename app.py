@@ -20,6 +20,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
+        self.w = None # No external window yet
 
         self.setWindowTitle("QDialog Demo")
         self.setFixedSize(400,300)
@@ -88,6 +89,7 @@ class MainWindow(QMainWindow):
         toolbar.addSeparator()
         self.button = QPushButton("push me!")
         self.button.clicked.connect(self.show_new_window)
+        self.button.setStatusTip("creates new window")
         toolbar.addWidget(self.button)
 
 
@@ -123,8 +125,12 @@ class MainWindow(QMainWindow):
             print("hey, don't ignore me!!")
 
     def show_new_window(self, checked):
-        self.w = AnotherWindow()
-        self.w.show()
+        if self.w is None:
+            self.w = AnotherWindow()
+            self.w.show()
+        else:
+            self.w.close() # Close window
+            self.w = None # Discard reference  
 
 
 app = QApplication([])

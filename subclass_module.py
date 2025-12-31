@@ -12,6 +12,7 @@ from PyQt6.QtWidgets import (
     QDialogButtonBox,
     QVBoxLayout
 )
+from random import randint
 
 
 class AnotherWindow(QWidget):
@@ -22,8 +23,9 @@ class AnotherWindow(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
-        self.label = QLabel("yet ANOTHER window")
+        self.label = QLabel(f"window {randint(0, 100)}")
         layout.addWidget(self.label)
+        self.setFixedSize(QSize(300,200))
         self.setLayout(layout)
 
 
