@@ -13,6 +13,20 @@ from PyQt6.QtWidgets import (
     QVBoxLayout
 )
 
+
+class AnotherWindow(QWidget):
+    '''
+    This window is a QWidget. Without a parent, it will appear as 
+    a free-floating window.
+    '''
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.label = QLabel("yet ANOTHER window")
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
 # CUSTOM DIALOG BOX:
 class CustomDialog(QDialog):
     def __init__(self, parent=None):

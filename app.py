@@ -9,9 +9,10 @@ from PyQt6.QtWidgets import (
     QStatusBar,
     QToolBar,
     QDialog,
-    QMessageBox
+    QMessageBox,
+    QPushButton
 )
-from subclass_module import CustomDialog
+from subclass_module import CustomDialog, AnotherWindow
 
 
 # Subclass QMainWindow to customize the app's main window:
@@ -83,6 +84,12 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(time_btn)
 
+        # NEW WINDOW:
+        toolbar.addSeparator()
+        self.button = QPushButton("push me!")
+        self.button.clicked.connect(self.show_new_window)
+        toolbar.addWidget(self.button)
+
 
     def toolbar_button_clicked(self, s):
         print("click", s)
@@ -97,24 +104,27 @@ class MainWindow(QMainWindow):
             print("Cancelled!")
     
     def message_getter(self, s):
-        msg = QMessageBox.warning(
-            self, 
-            "Alt!", 
-            "grr, i'm warning you!")
+        # msg = QMessageBox.warning(
+        #     self, 
+        #     "Alt!", 
+        #     "grr, i'm warning you!")
         
-        if msg == QMessageBox.StandardButton.Ok:
-            print("you heed my warning, then!")
+        # if msg == QMessageBox.StandardButton.Ok:
+        #     print("you heed my warning, then!")
 
-        # msg = QMessageBox(self)
-        # msg.setWindowTitle("hey, you!")
-        # msg.setText("Time's up!")
-        # msg.setStandardButtons(QMessageBox.StandardButton.Close)
-        # msg.setIcon(QMessageBox.Icon.Warning)
-        # button = msg.exec()
+        msg = QMessageBox(self)
+        msg.setWindowTitle("hey, you!")
+        msg.setText("Time's up!")
+        msg.setStandardButtons(QMessageBox.StandardButton.Close)
+        msg.setIcon(QMessageBox.Icon.Warning)
+        button = msg.exec()
 
-        # if button == QMessageBox.StandardButton.Close:
-        #     print("hey, don't ignore me!!")
+        if button == QMessageBox.StandardButton.Close:
+            print("hey, don't ignore me!!")
 
+    def show_new_window(self, checked):
+        self.w = AnotherWindow()
+        self.w.show()
 
 
 app = QApplication([])
