@@ -1,6 +1,6 @@
 
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QAction, QIcon, QKeySequence
+from PyQt6.QtGui import QAction, QIcon, QKeySequence, QColor
 from PyQt6.QtWidgets import (
     QApplication, 
     QMainWindow, 
@@ -10,10 +10,10 @@ from PyQt6.QtWidgets import (
     QToolBar,
     QDialog,
     QMessageBox,
-    QPushButton
+    QPushButton,
+    QGraphicsDropShadowEffect
 )
 from subclass_module import CustomDialog, AnotherWindow
-
 
 # Subclass QMainWindow to customize the app's main window:
 class MainWindow(QMainWindow):
@@ -23,12 +23,16 @@ class MainWindow(QMainWindow):
         self.w1 = AnotherWindow() # Creates window upon start-up
         self.w2 = AnotherWindow()
 
-        self.setWindowTitle("Multiple Windows Demo")
-        self.setFixedSize(500,400)
+        self.setWindowTitle("PyQt6 App")
+        self.setMinimumSize(500,400)
        
         label = QLabel("hai! :3")
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        
+        label.setStyleSheet(
+            "background-color: grey; " \
+            "font-size: 32px;"
+            )
+
         self.setCentralWidget(label)
 
         toolbar = QToolBar("THE toolbar")
@@ -49,6 +53,15 @@ class MainWindow(QMainWindow):
         button_action2.triggered.connect(self.toolbar_button_clicked)
         button_action2.setCheckable(True)
         toolbar.addAction(button_action2)
+
+        # MESSAGE BOX: 
+        toolbar.addSeparator()
+
+        time_icon = "alarm-clock--exclamation.png"
+        time_btn = QAction(QIcon(time_icon), "message pop-up", self)
+        time_btn.setStatusTip("message box")
+        time_btn.triggered.connect(self.message_getter)
+        toolbar.addAction(time_btn)
 
         toolbar.addSeparator()
 
@@ -75,13 +88,6 @@ class MainWindow(QMainWindow):
         dialog_button.setStatusTip("dialog box")
         dialog_button.triggered.connect(self.dialog_getter)
         toolbar.addAction(dialog_button)
-
-        # MESSAGE BOX: 
-        time_icon = "alarm-clock--exclamation.png"
-        time_btn = QAction(QIcon(time_icon), "message pop-up", self)
-        time_btn.setStatusTip("message box")
-        time_btn.triggered.connect(self.message_getter)
-        toolbar.addAction(time_btn)
 
         file_menu.addSeparator()
         file_menu.addAction(time_btn)
