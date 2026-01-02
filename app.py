@@ -1,6 +1,6 @@
 
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QAction, QIcon, QKeySequence, QColor
+from PyQt6.QtGui import QAction, QIcon, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication, 
     QMainWindow, 
@@ -8,12 +8,19 @@ from PyQt6.QtWidgets import (
     QCheckBox,
     QStatusBar,
     QToolBar,
-    QDialog,
     QMessageBox,
-    QPushButton,
-    QGraphicsDropShadowEffect
+    QPushButton
 )
 from subclass_module import CustomDialog, AnotherWindow
+
+
+try:
+    from ctypes import windll
+    app_id = 'testapp.toritza'
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)
+except ImportError:
+    pass
+
 
 # Subclass QMainWindow to customize the app's main window:
 class MainWindow(QMainWindow):
@@ -23,7 +30,7 @@ class MainWindow(QMainWindow):
         self.w1 = AnotherWindow() # Creates window upon start-up
         self.w2 = AnotherWindow()
 
-        self.setWindowTitle("PyQt6 App")
+        self.setWindowTitle("hello, world!")
         self.setMinimumSize(500,400)
        
         label = QLabel("hai! :3")
@@ -149,10 +156,13 @@ class MainWindow(QMainWindow):
             window.show()
 
 
-app = QApplication([])
-w = MainWindow()
-w.show() 
+if __name__ == '__main__':
+    app = QApplication([])
+    app.setWindowIcon(QIcon('balloon.png'))
 
-# Start the event loop:
-app.exec()
+    w = MainWindow()
+    w.show() 
+
+    # Start the event loop:
+    app.exec()
 
