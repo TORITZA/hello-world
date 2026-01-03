@@ -12,7 +12,9 @@ from PyQt6.QtWidgets import (
     QPushButton
 )
 from subclass_module import CustomDialog, AnotherWindow
+import os 
 
+basedir = os.path.dirname(__file__)
 
 try:
     from ctypes import windll
@@ -46,7 +48,7 @@ class MainWindow(QMainWindow):
         toolbar.setIconSize(QSize(16, 16))
         self.addToolBar(toolbar)
 
-        button_action = QAction(QIcon("animal.png"),"My button", self)
+        button_action = QAction(QIcon(os.path.join(basedir, "animal.png")),"My button", self)
         button_action.setStatusTip("This is MY button!")
         button_action.triggered.connect(self.toolbar_button_clicked)
         button_action.setCheckable(True)
@@ -55,7 +57,7 @@ class MainWindow(QMainWindow):
 
         toolbar.addSeparator()
 
-        button_action2 = QAction(QIcon("animal-dog.png"), "My SECOND button", self)
+        button_action2 = QAction(QIcon(os.path.join(basedir, "animal-dog.png")), "My SECOND button", self)
         button_action2.setStatusTip("This is my SECOND button!!")
         button_action2.triggered.connect(self.toolbar_button_clicked)
         button_action2.setCheckable(True)
@@ -65,7 +67,7 @@ class MainWindow(QMainWindow):
         toolbar.addSeparator()
 
         time_icon = "alarm-clock--exclamation.png"
-        time_btn = QAction(QIcon(time_icon), "message pop-up", self)
+        time_btn = QAction(QIcon(os.path.join(basedir, time_icon)), "message pop-up", self)
         time_btn.setStatusTip("message box")
         time_btn.triggered.connect(self.message_getter)
         toolbar.addAction(time_btn)
@@ -158,7 +160,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication([])
-    app.setWindowIcon(QIcon('balloon.png'))
+    app.setWindowIcon(QIcon(os.path.join(basedir, 'balloon.ico')))
 
     w = MainWindow()
     w.show() 
