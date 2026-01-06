@@ -5,7 +5,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('balloon.ico', '.'),('icons', 'icons')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
