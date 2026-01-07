@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InstallForgeProject>
+  <Metadata productVersion="1.6.1" projectFileVersion="2.0"/>
+  <ProductInformation>
+    <Name>Demo App</Name>
+    <Version>1.0</Version>
+    <CompanyName>TORITZA</CompanyName>
+    <WebURI>https://</WebURI>
+  </ProductInformation>
+  <InstallerConfiguration>
+    <Prerequisites>
+      <OperatingSystem check="true">
+        <WindowsXP>false</WindowsXP>
+        <WindowsServer2003>false</WindowsServer2003>
+        <WindowsVista>false</WindowsVista>
+        <WindowsServer2008>false</WindowsServer2008>
+        <Windows7>true</Windows7>
+        <Windows8>true</Windows8>
+        <Windows10>true</Windows10>
+        <WindowsServer2016>false</WindowsServer2016>
+        <WindowsServer2019>false</WindowsServer2019>
+        <WindowsServer2022>false</WindowsServer2022>
+        <Windows11>true</Windows11>
+        <WindowsServer2025>false</WindowsServer2025>
+      </OperatingSystem>
+    </Prerequisites>
+    <UserInterface>
+      <WizardImage filePath="&lt;main&gt;"/>
+      <HeaderImage filePath="&lt;main&gt;"/>
+      <Label isEnabled="true"/>
+      <VisualStyle isEnabled="true"/>
+    </UserInterface>
+    <InstallationFiles defaultInstallationPath="&lt;ProgramFiles&gt;\&lt;Company&gt;\&lt;AppName&gt;\" isDefaultInstallationPathAlterable ="true">
+      <InstallationFile size="1.7 MB" type="exe">C:\Users\TORIS\hello-world!\dist\app\hello world!.exe</InstallationFile>
+      <InstallationFile size="84.8 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_bz2.pyd</InstallationFile>
+      <InstallationFile size="130.3 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_ctypes.pyd</InstallationFile>
+      <InstallationFile size="276.8 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_decimal.pyd</InstallationFile>
+      <InstallationFile size="67.8 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_hashlib.pyd</InstallationFile>
+      <InstallationFile size="155.8 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_lzma.pyd</InstallationFile>
+      <InstallationFile size="84.3 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\_socket.pyd</InstallationFile>
+      <InstallationFile size="98.9 KB" type="ico">C:\Users\TORIS\hello-world!\dist\app\_internal\balloon.ico</InstallationFile>
+      <InstallationFile size="1.3 MB" type="zip">C:\Users\TORIS\hello-world!\dist\app\_internal\base_library.zip</InstallationFile>
+      <InstallationFile size="5 MB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\libcrypto-3.dll</InstallationFile>
+      <InstallationFile size="38.8 KB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\libffi-8.dll</InstallationFile>
+      <InstallationFile size="70.8 KB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\python3.dll</InstallationFile>
+      <InstallationFile size="5.8 MB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\python313.dll</InstallationFile>
+      <InstallationFile size="32.3 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\select.pyd</InstallationFile>
+      <InstallationFile size="695.3 KB" type="pyd">C:\Users\TORIS\hello-world!\dist\app\_internal\unicodedata.pyd</InstallationFile>
+      <InstallationFile size="117.6 KB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\VCRUNTIME140.dll</InstallationFile>
+      <InstallationFile size="48.6 KB" type="dll">C:\Users\TORIS\hello-world!\dist\app\_internal\VCRUNTIME140_1.dll</InstallationFile>
+      <InstallationFile size="N/A" type="[Folder]">C:\Users\TORIS\hello-world!\dist\app\_internal\PyQt6\</InstallationFile>
+      <InstallationFile size="N/A" type="[Folder]">C:\Users\TORIS\hello-world!\dist\app\_internal\icons\</InstallationFile>
+    </InstallationFiles>
+    <Languages/>
+    <Variables/>
+    <Commands/>
+    <Registry/>
+    <Shortcuts defaultPath="&lt;Company&gt;\&lt;AppName&gt;\" isDefaultPathAlterable="false" isCreateStartmenuShortcutsForAllUsers="false" isCreateDesktopShortcutsForAllUsers="true">
+      <Shortcut destination="Startmenu" name="TORITZA&apos;s Demo App" targetFile="&lt;InstallPath&gt;\hello world!.exe" commandLineArguments="" iconFilePath="" iconIndex="0"/>
+    </Shortcuts>
+    <Serials isDialogEnabled="false" count="1000" mask ="#####-#####-#####-#####"/>
+    <SplashScreen isDialogEnabled="false" delayTime="2">
+      <Image filePath=""/>
+      <Sound isEnabled="false" filePath=""/>
+    </SplashScreen>
+    <License isDialogEnabled="false">
+      <Data>e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcZGVmZjBcbm91aWNvbXBhdFxkZWZsYW5nMTAzM3tcZm9udHRibHtcZjBcZm5pbCBBcmlhbDt9fQ0Ke1wqXGdlbmVyYXRvciBSaWNoZWQyMCAxMC4wLjI2MTAwfVx2aWV3a2luZDRcdWMxIA0KXHBhcmRcZjBcZnMyMFxwYXINCn0NCgA=</Data>
+    </License>
+    <Finish isRebootMachineEnabled="false">
+      <Program executableFilePath="&lt;InstallPath&gt;\hello world!.exe" isLaunchEnabled="true" arguments=""/>
+    </Finish>
+  </InstallerConfiguration>
+  <UninstallerConfiguration isPackaged="true">
+    <UninstallerExecutableFileName>Uninstall</UninstallerExecutableFileName>
+    <OpenWebURIAfterUninstallation isEnabled="false">https://</OpenWebURIAfterUninstallation>
+    <CustomDisplayIcon isEnabled="false" iconFilePath="&lt;InstallPath&gt;\"/>
+  </UninstallerConfiguration>
+  <VisualUpdateConfiguration isPackaged="false">
+    <ProductName>&lt;AppName&gt;</ProductName>
+    <ProductVersion>&lt;AppVersion&gt;</ProductVersion>
+    <Language>0</Language>
+    <UpdateScriptURIs>
+      <MainURI>https://</MainURI>
+      <FirstMirrorURI>https://</FirstMirrorURI>
+      <SecondMirrorURI>https://</SecondMirrorURI>
+    </UpdateScriptURIs>
+    <updateExecutableFileName>Update</updateExecutableFileName>
+    <proEditionLicenseKey/>
+    <Program executableFilePath="" isLaunchEnabled="false" isTerminationEnabled="false"/>
+  </VisualUpdateConfiguration>
+  <BuildConfiguration>
+    <SetupFilePath>C:\Users\TORIS\OneDrive\Desktop\DemoAppInstaller.exe</SetupFilePath>
+    <SetupIconPath>..\icons\ancient.ico</SetupIconPath>
+    <UninstallerIconPath>..\icons\ancient.ico</UninstallerIconPath>
+    <Compression method="0" level="1"/>
+    <CodeSigning isEnabled="false" signToolCommandLine="/n &quot;Subject&quot; /tr http://timestamp.digicert.com /td sha256 /fd sha256 &quot;&lt;ExecutableFilePath&gt;&quot;"/>
+  </BuildConfiguration>
+</InstallForgeProject>
